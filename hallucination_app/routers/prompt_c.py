@@ -8,6 +8,9 @@ router = Router()
 #TODO: update to add the argument for model_path
 from django.http import StreamingHttpResponse
 
+
+#Add path to
+# Add path to
 @router.get("/prompt_c")
 def StoryTelling(request,input:str):
     assert (isinstance(input,str))
