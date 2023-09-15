@@ -25,10 +25,10 @@ def StoryTelling(request,input:str):
 
     llama2_bin = os.path.join(settings.BASE_DIR, "hallucination_app","binaries/./run")
     llama2_model = os.path.join(settings.BASE_DIR,"hallucination_app","binaries","stories15M.bin")
-
+    binaries_dir = os.path.join(settings.BASE_DIR, "hallucination_app", "binaries")
 
     cmd = [llama2_bin, llama2_model, "-t", "0.8", "-n", "256", "-i", input]
-    process = subprocess.Popen(cmd,stdout=subprocess.PIPE,text=True)
+    process = subprocess.Popen(cmd,stdout=subprocess.PIPE,text=True,cwd=binaries_dir)
 
     def stream():
         for line in iter(process.stdout.readline, ""):
