@@ -14,7 +14,6 @@ from django.conf import settings
 
 print (settings.BASE_DIR)
 
-
 #Add path to
 # Add path to
 @router.get("/prompt_c")
