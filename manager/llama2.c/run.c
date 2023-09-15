@@ -16,6 +16,25 @@
 // ----------------------------------------------------------------------------
 // Transformer model
 
+
+// Added the code to find the directory of
+
+
+#include <libgen.h>
+#include <limits.h>
+#include <unistd.h>
+
+char* get_executable_dir() {
+    char result[PATH_MAX];
+    ssize_t count = readlink("/proc/self/exe", result, PATH_MAX);
+    char* dir;
+    if (count != -1) {
+        dir = dirname(result);
+    }
+    return dir;
+}
+
+
 typedef struct {
     int dim; // transformer dimension
     int hidden_dim; // for ffn layers
@@ -915,7 +934,7 @@ int main(int argc, char *argv[]) {
     // default parameters
     char *checkpoint_path = NULL;  // e.g. out/model.bin
 
-    char *tokenizer_path = "tokenizer.bin";
+    char *tokenizer_path = "./tokenizer.bin";
     //char *tokenizer_path = "tokenizer.bin";  //eg. Tokenizer.bin
     float temperature = 1.0f;   // 0.0 = greedy deterministic. 1.0 = original. don't set higher
     float topp = 0.9f;          // top-p in nucleus sampling. 1.0 = off. 0.9 works well, but slower
