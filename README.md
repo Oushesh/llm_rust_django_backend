@@ -8,3 +8,5 @@ Backend deployment on heroku for repo: llm_rust_django_nextjs
    * heroku logs -n 200
 
 ## Check the app: https://llmrustdjangobackend-5203aa413008.herokuapp.com/
+
+## 
