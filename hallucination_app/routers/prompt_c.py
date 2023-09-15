@@ -11,8 +11,8 @@ from django.http import StreamingHttpResponse
 @router.get("/prompt_c")
 def StoryTelling(request,input:str):
     assert (isinstance(input,str))
-    llama2_bin = "/Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/manager/llama2.c/./run"
-    llama2_model = "/Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/manager/llama2.c/stories15M.bin"
+    #llama2_bin = "/Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/manager/llama2.c/./run"
+    #llama2_model = "/Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/manager/llama2.c/stories15M.bin"
 
     llama2_bin = "../../manager/llama2.c/./run"
     llama2_model = "../../manager/llama2.c/stories15M.bin"
