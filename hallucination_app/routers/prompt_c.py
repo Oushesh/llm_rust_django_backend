@@ -14,6 +14,8 @@ def StoryTelling(request,input:str):
     llama2_bin = "/Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/manager/llama2.c/./run"
     llama2_model = "/Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/manager/llama2.c/stories15M.bin"
 
+    llama2_bin = "../../manager/llama2.c/./run"
+    llama2_model = ""
     cmd = [llama2_bin, llama2_model, "-t", "0.8", "-n", "256", "-i", input]
     process = subprocess.Popen(cmd,stdout=subprocess.PIPE,text=True)
 
