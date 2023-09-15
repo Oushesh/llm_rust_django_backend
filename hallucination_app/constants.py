@@ -1,4 +1,5 @@
 import os
+"""
 from chromadb.config import Settings
 
 # Define the folder for storing database
@@ -10,4 +11,4 @@ CHROMA_SETTINGS = Settings(
     persist_directory=PERSIST_DIRECTORY,
     anonymized_telemetry=False
 )
-
+"""

@@ -8,7 +8,8 @@ pre-commit
 psycopg2-binary
 django-cors-headers
 langchain
-
+chromadb
+Chroma
 
 
                  
