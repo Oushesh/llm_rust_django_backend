@@ -23,17 +23,18 @@ def StoryTelling(request,input:str):
     #llama2_model = "/Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/manager/llama2.c/stories15M.bin"
     binaries_dir = os.path.join(settings.BASE_DIR, "hallucination_app", "binaries")
 
-    c_file_path = os.path.join(settings.BASE_DIR, "hallucination_app", "binaries", "run.c")
+    #c_file_path = os.path.join(settings.BASE_DIR, "hallucination_app", "binaries", "run.c")
 
     llama2_bin = os.path.join(settings.BASE_DIR, "hallucination_app","binaries/./run")
     llama2_model = os.path.join(settings.BASE_DIR,"hallucination_app","binaries","stories15M.bin")
 
-
+    """"
     # Check if the binary doesn't exist
     if not os.path.exists(llama2_bin):
         # Compile the C code
         compile_command = ["gcc", c_file_path, "-o", llama2_bin]
         subprocess.run(compile_command, check=True)
+    """
 
     cmd = [llama2_bin, llama2_model, "-t", "0.8", "-n", "256", "-i", input]
     process = subprocess.Popen(cmd,stdout=subprocess.PIPE,text=True,cwd=binaries_dir)
