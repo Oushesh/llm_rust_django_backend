@@ -96,6 +96,3 @@ def parse_arguments():
     )
     return parser.parse_args()
 
-
-## how to run this in 8gb memory? 16gb memory ram is something we don't have right now.
-## Run GPT locally and not in the cloud for now.
