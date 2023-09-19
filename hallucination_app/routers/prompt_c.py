@@ -1,28 +1,22 @@
 """
-Ninja Django API to collect the
+Ninja Django API to call in the routers.
 """
+import os
 from ninja import Router
 import subprocess
 router = Router()
 
 #TODO: update to add the argument for model_path
 from django.http import StreamingHttpResponse
-
-import os
-
 from django.conf import settings
 
-#Add path to
-# Add path to
 @router.get("/prompt_c")
 def StoryTelling(request,input:str):
     assert (isinstance(input,str))
     #llama2_bin = "/Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/manager/llama2.c/./run"
     #llama2_model = "/Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/manager/llama2.c/stories15M.bin"
+
     binaries_dir = os.path.join(settings.BASE_DIR, "hallucination_app", "binaries")
-
-    #c_file_path = os.path.join(settings.BASE_DIR, "hallucination_app", "binaries", "run.c")
-
     llama2_bin = os.path.join(settings.BASE_DIR, "hallucination_app","binaries/./run")
     llama2_model = os.path.join(settings.BASE_DIR,"hallucination_app","binaries","stories15M.bin")
 
@@ -39,8 +33,7 @@ def StoryTelling(request,input:str):
 
     def stream():
         for line in iter(process.stdout.readline, ""):
-            yield f"data: {line}\n\n"
-            #print (f"data: {line}\n\n")
+            yield f"data: {line}\n\n"           #yield is a lazy loader and generator. Memory cost optimisation
         process.stdout.close()
         process.wait()
     return StreamingHttpResponse(stream(), content_type="text/event-stream")
