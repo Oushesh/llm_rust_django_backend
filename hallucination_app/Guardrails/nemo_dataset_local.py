@@ -6,17 +6,16 @@ reduced toxicity.
 from typing import Any, Callable, Coroutine
 from langchain.llms.base import BaseLLM
 from nemoguardrails import LLMRails, RailsConfig
-from django.conf import settings
 
-import yaml,os
+
+import yaml, os
 from dotenv import load_dotenv
 
-load_dotenv(os.path.join(settings.BASE_DIR,"hallucination_app","Guardrails",".env"))
+load_dotenv(".env")
 
-#load_dotenv(".env")
 
-from hallucination_app.Guardrails.knowledge_base.constants import model_content, rag_colang_content
-from hallucination_app.Guardrails.utils import test_colang_config,test_model_config
+from knowledge_base.constants import model_content, rag_colang_content
+from utils import test_colang_config, test_model_config
 
 def guardrail():
     try:
@@ -30,8 +29,8 @@ def guardrail():
             "`pip install llama_index`."
         )
 
-    #TODO: add testing function to test the contents
-    #test_colang_config(rag_colang_content)
+    # TODO: add testing function to test the contents
+    # test_colang_config(rag_colang_content)
     test_model_config(model_content)
 
     # initialize rails config
@@ -44,7 +43,8 @@ def guardrail():
 
     def _get_llama_index_query_engine(llm: BaseLLM):
         docs = llama_index.SimpleDirectoryReader(
-            input_files=[os.path.join(settings.BASE_DIR,"hallucination_app","Guardrails","knowledge_base","report.md")]
+            input_files=[
+                os.path.join("knowledge_base", "report.md")]
         ).load_data()
         llm_predictor = llama_index.LLMPredictor(llm=llm)
         index = llama_index.GPTVectorStoreIndex.from_documents(
@@ -54,7 +54,7 @@ def guardrail():
         return default_query_engine
 
     def _get_callable_query_engine(
-        query_engine: BaseQueryEngine,
+            query_engine: BaseQueryEngine,
     ) -> Callable[[str], Coroutine[Any, Any, str]]:
         async def get_query_response(query: str) -> str:
             response = query_engine.query(query)
@@ -76,11 +76,11 @@ def guardrail():
 
     history = [{"role": "user", "content": "Who is the president of United States?"}]
     result = app.generate(messages=history)
-    print ("result",result)
+
     return result
 
 
 if __name__ == "__main__":
-    #test_yaml_file("knowledge_base/model_config.yaml")
+    # test_yaml_file("knowledge_base/model_config.yaml")
     result=guardrail()
-    print ("result", result)
+    print ("result",result)
