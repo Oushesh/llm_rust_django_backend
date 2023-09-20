@@ -18,7 +18,8 @@ load_dotenv(os.path.join(settings.BASE_DIR,"hallucination_app","Guardrails",".en
 from hallucination_app.Guardrails.knowledge_base.constants import model_content, rag_colang_content
 from hallucination_app.Guardrails.utils import test_colang_config,test_model_config
 
-def guardrail():
+def guardrail(prompt:str)->bool:
+    assert (isinstance(prompt, str) == True)
     try:
         import llama_index
         from llama_index.indices.query.base import BaseQueryEngine
@@ -74,7 +75,7 @@ def guardrail():
         _get_callable_query_engine(query_engine), name="llama_index_query"
     )
 
-    history = [{"role": "user", "content": "Who is the president of United States?"}]
+    history = [{"role": "user", "content": prompt}]
     result = app.generate(messages=history)
     print ("result",result)
     return result

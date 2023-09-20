@@ -18,6 +18,7 @@ from knowledge_base.constants import model_content, rag_colang_content
 from utils import test_colang_config, test_model_config
 
 def guardrail():
+
     try:
         import llama_index
         from llama_index.indices.query.base import BaseQueryEngine

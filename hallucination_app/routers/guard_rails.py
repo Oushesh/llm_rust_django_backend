@@ -12,4 +12,4 @@ router = Router()
 @router.get("/guard")
 def guard_rail(request,prompt:str):
     assert (isinstance(prompt,str)==True)
-    return guardrail()
+    return guardrail(prompt)
