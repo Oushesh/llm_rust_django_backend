@@ -6,14 +6,16 @@ reduced toxicity.
 from typing import Any, Callable, Coroutine
 from langchain.llms.base import BaseLLM
 from nemoguardrails import LLMRails, RailsConfig
+from django.conf import settings
 
-import yaml
+
+import yaml,os
 from dotenv import load_dotenv
 
-load_dotenv("../../.env")
+load_dotenv(os.path.join(settings.BASE_DIR),"hallucination_app","Guardrails/.env")
 
-from knowledge_base.constants import model_content, rag_colang_content
-from utils import test_colang_config,test_model_config
+from hallucination_app.Guardrails.knowledge_base.constants import model_content, rag_colang_content
+from hallucination_app.Guardrails.utils import test_colang_config,test_model_config
 
 def guardrail():
     try:
