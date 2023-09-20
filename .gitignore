@@ -1,2 +1,4 @@
 fact_checker
 hallucination_app/binaries/.run
+.env
+hallucination_app/Guardrails/.env
