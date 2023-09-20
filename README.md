@@ -121,6 +121,8 @@ https://colab.research.google.com/drive/1AXccYmC11kWJ8zZtqS78ZvmBCC7yIPI0#scroll
    
       Input Data: .pdf format 
       The RAG with Guardrail allows to reduce Hallucination by providing a highly easily customisable 
+   
+    https://colab.research.google.com/github/pinecone-io/examples/blob/master/learn/generation/chatbots/nemo-guardrails/03-rag-with-actions.ipynb#scrollTo=nTMYxfWqcKl_
 
 ## References:
    * Frontend: https://llm-backend-rust.vercel.app/

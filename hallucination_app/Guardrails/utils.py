@@ -1,9 +1,7 @@
 import yaml
-def test_model_config(model_config:str)->bool:
-    assert (model_config.endswith("yaml") == True)
-    with open(model_config, 'r') as stream:
+def test_model_config(model_content:str)->bool:
         try:
-            data = yaml.safe_load(stream)
+            data = yaml.safe_load(model_content)
             return True
         except yaml.YAMLError as exc:
             print(exc)
@@ -27,7 +25,6 @@ def test_colang_config(colang_config:str)->bool:
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
         return False
-
 
 def test_yaml_file(file:str):
     # Read the YAML file

@@ -1,4 +1,4 @@
-yaml_content = """
+model_content = """
 models:
 - type: main
   engine: openai
