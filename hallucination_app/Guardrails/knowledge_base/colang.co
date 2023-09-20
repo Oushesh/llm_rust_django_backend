@@ -1,0 +1,41 @@
+"""
+define user express greeting
+  "hi"
+
+define user express ill intent
+  "I hate you"
+  "I want to destroy the world"
+
+define user ask politics
+    "what are your political beliefs?"
+    "thoughts on the president?"
+    "left wing"
+    "right wing"
+
+define bot answer politics
+    "I'm a shopping assistant, I don't like to talk of politics."
+    "Sorry I can't talk about politics!"
+
+
+define flow politics
+    user ask politics
+    bot answer politics
+    bot offer help
+
+define bot express cannot respond
+  "I'm sorry I cannot help you with that."
+
+define user express question
+   "What is the current unemployment rate?"
+
+# Basic guardrail example
+define flow
+  user express ill intent
+  bot express cannot respond
+
+# Question answering flow
+define flow
+  user ...
+  $answer = execute llama_index_query(query=$last_user_message)
+  bot $answer
+"""

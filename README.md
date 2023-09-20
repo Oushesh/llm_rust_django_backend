@@ -101,6 +101,10 @@ https://colab.research.google.com/drive/1AXccYmC11kWJ8zZtqS78ZvmBCC7yIPI0#scroll
     -- video for instructing videos --> get the automated pipelines 
     -- set up for them. (show it to customers and test).
 
+## Pure C Inference for  Stories llam2 (smaller network with similar architecture to LLAMA2 of Facebeook)
+   * 15M Parameters, 110M Parameters. 1GB dataset. (mini Lama2 for speed bare bone on Macbook 2 Pro.)
+     Train 2.1M rows, validation 21K rows
+
 ## Nemo Guardrails:
    DONE: Test on Google Colab
    TODO: add new endpoint on Django Ninja
@@ -122,3 +126,5 @@ https://colab.research.google.com/drive/1AXccYmC11kWJ8zZtqS78ZvmBCC7yIPI0#scroll
    * Frontend: https://llm-backend-rust.vercel.app/
    * Backend:  Deployment of Django on Vercel.json: https://www.youtube.com/watch?v=ZjVzHcXCeMU&t=423s
    * Backend: also on heroku: https://llmrustdjangobackend-5203aa413008.herokuapp.com/api/docs#
+   * Huggingface: https://huggingface.co/datasets/roneneldan/TinyStories
+
