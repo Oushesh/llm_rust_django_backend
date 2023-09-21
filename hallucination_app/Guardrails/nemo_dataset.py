@@ -8,7 +8,7 @@ from langchain.llms.base import BaseLLM
 from nemoguardrails import LLMRails, RailsConfig
 from django.conf import settings
 
-import yaml,os
+import os
 from dotenv import load_dotenv
 
 load_dotenv(os.path.join(settings.BASE_DIR,"hallucination_app","Guardrails",".env"))
@@ -77,8 +77,7 @@ def guardrail(prompt:str)->bool:
 
     history = [{"role": "user", "content": prompt}]
     result = app.generate(messages=history)
-    print ("result",result)
-    return result
+    return result["content"]
 
 
 if __name__ == "__main__":
