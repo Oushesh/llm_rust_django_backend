@@ -11,7 +11,6 @@
    * https://llmrustdjangobackend-5203aa413008.herokuapp.com/api/docs#
 
 
-
 ## Further Developments Done: 
    Avoid Hallucination: Use case for high tech companies in critical data sector.
    Why highly profile companies or legal tech companies need to avoid hallucination
@@ -20,6 +19,10 @@
    Example: Google shares drop by 100 million because of misplaced
       information from 
 
+    Flowapp: Reduces time footprint from coversation to solution. (pitch this)
+    Call to setup of pipelines for a given customer directly from video.
+    Good support.
+    
 ## Solution: 
     * Prompt Engineering, Reinforcement Learning Human Feedback (RLHF):
         -- Pros and Cons: Prompt engineering requires lots of effort to build
