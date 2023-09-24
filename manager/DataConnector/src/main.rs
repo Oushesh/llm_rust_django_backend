@@ -1,11 +1,19 @@
-use std::path::PathBuf;
+use axum::prelude::*;
+use axum::Router;
+use axum::routing::nest;
+use axum::handler::{get, post};
+use axum::AddExtension;
+use axum::serve::bind;
+use axum::routing::nest::Nest;
+use std::net::SocketAddr;
+use transformers::{LanguageModel, LlmEmbedding};
+use pinecone_sdk::pinecone::{Document, Pinecone};
+use qdrant_sdk::index::{Index, IndexConfig};
+use axum::handler::delete;
 
-use axum::{routing::get, Router};
-use tower_http::services::ServeDir;
 
 mod utils;
 mod uploader;
-
 
 async fn hello_world() -> &'static str
 {
@@ -17,19 +25,23 @@ async fn hello_world() -> &'static str
 #[shuttle_runtime::main]
 async fn axum() -> shuttle_axum::ShuttleAxum
 {
-    let router = Router::new()
-        .route("/", get(hello_world))
-        .route("/upload",post(upload_file))
-        .nest_service("/assets", ServeDir::new(PathBuf::from("assets")))
-        .layer(tide::middleware::StateMiddleware::new(model))
-        .layer(tide::middleware::StateMiddleware::new(pinecone))
-        .layer(tide::middleware::StateMiddleware::new(qdrant));
+    let model = LanguageModel::new("path/to/your/model").unwrap();
+    let pinecone = Pinecone::new("pinecone_api_key");
+    let qdrant = Index::new("qdrant_api_key",IndexConfig::default());
+    let app = nest(
+        "/",
+        Router::new()
+            .route("/", get(hello_world))
+            .route("/upload", post(uploader::upload_file))
+            .nest("/assets", axum_static_files::StaticFiles::new("assets"))
+    )
+        .layer(model)
+        .layer(pinecone)
+        .layer(qdrant);
 
-    let port = "127.0.0.1:8080";
-    let addr = port.parse()?;
-
-    axum::Server::bind(&addr)
+    let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
+    bind(&addr)
         .serve(app.into_make_service())
-        .await?;
-    Ok(router.into())
+        .await
+        .unwrap();
 }

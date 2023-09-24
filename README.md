@@ -242,6 +242,9 @@ https://colab.research.google.com/drive/1AXccYmC11kWJ8zZtqS78ZvmBCC7yIPI0#scroll
    
     https://colab.research.google.com/github/pinecone-io/examples/blob/master/learn/generation/chatbots/nemo-guardrails/03-rag-with-actions.ipynb#scrollTo=nTMYxfWqcKl_
 
+## Rust_Data_Connector
+    * https://crates.io/crates/rust-bert
+
 ## References:
    * Frontend: https://llm-backend-rust.vercel.app/
    * Backend:  Deployment of Django on Vercel.json: https://www.youtube.com/watch?v=ZjVzHcXCeMU&t=423s
