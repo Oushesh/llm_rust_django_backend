@@ -3,13 +3,16 @@ use std::path::PathBuf;
 use axum::{routing::get, Router};
 use tower_http::services::ServeDir;
 
+mod utils;
+use utils::get_embeddings:
+
+mod uploader;
+use uploader::
+
 async fn hello_world() -> &'static str {
     "Hello, world!"
 }
 
-async fn upload_file() -> tide::Result {
-
-}
 
 
 //The macros of shuttle_runtime main allows
@@ -28,8 +31,7 @@ async fn axum() -> shuttle_axum::ShuttleAxum {
     let addr = port.parse()?;
 
     axum::Server::bind(&addr)
-        .serve(app.into_)
-
-        ;
+        .serve(app.into_make_service())
+        .await?;
     Ok(router.into())
 }
