@@ -1,0 +1,23 @@
+[package]
+name = "dataconnector005"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.6.18"
+shuttle-axum = "0.25.0"
+shuttle-runtime = "0.25.0"
+chrono = { version = "0.4.26", features = ["serde"] }
+futures = "0.3.28"
+hyper = { version = "0.14.26", features = ["client", "http2"] }
+hyper-tls = "0.5.0"
+serde = { version = "1.0.163", features = ["derive"] }
+serde_json = "1.0.96"
+tokio = "1.28.2"
+tower-http = { version = "0.4.0", features = ["full"] }
+axum-tide-compat = "0.3"
+tide = "0.16"
+tide-multipart = "0.2"
+pinecone-sdk = "0.6"
+qdrant-sdk = "0.3"
+transformers = "0.5"
