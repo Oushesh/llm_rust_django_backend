@@ -17,12 +17,19 @@ struct Document {
     // You can add fields like title, content, etc.
 }
 
+//File uploader.
 async fn upload_file(
     req: Request<()>,
     model: tide::State<LanguageModel>,
     pinecone: tide::State<Pinecone>,
     qdrant: tide::State<Index>,
 ) -> tide::Result{
-    let mut multipart =
+    let mut multipart = Multipart::new(req).await?;
+
+    while let Some(mut field) =
+
+
+
+
 
 }
