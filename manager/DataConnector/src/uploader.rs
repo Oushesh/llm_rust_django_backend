@@ -1,12 +1,11 @@
-use axum_tide_compat::AxumExt;
-use tide::multipart::Multipart;
-use tide::Body;
+use axum::prelude::*;
+use axum_multipart::Multipart;
 use futures::StreamExt;
 use serde::{Deserialize, Serialize};
-use tide::{Request,Response,StatusCode};
-use transformers::{LanguageModel,LlmEmbedding};
-use pinecone_sdk::pinecone::{Document,Pinecone};
-use qdrant_sdk::index::{Index,IndexConfig};
+use tide::Request;
+use transformers::{LanguageModel, LlmEmbedding};
+use pinecone_sdk::pinecone::{Document, Pinecone};
+use qdrant_sdk::index::{Index, IndexConfig};
 use std::fs::File;
 use std::io::Write;
 use tempfile::NamedTempFile;
