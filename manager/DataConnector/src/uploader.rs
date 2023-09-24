@@ -17,6 +17,16 @@ struct Document {
     // You can add fields like title, content, etc.
 }
 
+fn get_embeddings(markdown: &str, model: &LanguageModel) -> Vec<f32> {
+    // Tokenize the Markdown content (customize as needed)
+    let tokens = model.tokenize(markdown);
+
+    // Generate embeddings from the model
+    let embeddings = model.embed(&tokens).unwrap();
+
+    embeddings
+}
+
 //File uploader.
 async fn upload_file(
     req: Request<()>,
@@ -27,6 +37,6 @@ async fn upload_file(
     let mut multipart = Multipart::new(req).await?;
 
     while let Some(mut field) =
-        
+
 }
 

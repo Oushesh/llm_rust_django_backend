@@ -7,3 +7,10 @@ pub fn get_embeddings(markdown: &str, model: &LanguageModel) -> Vec<f32> {
 
     embeddings
 }
+
+pub fn upload_to_pinecone_or_qdrant(embeddings: Vec<f32>, pinecone: &Pinecone, qdrant: &Index)
+{
+    // Upload embeddings to Pinecone or Qdrant
+    // You should use Pinecone or Qdrant SDKs to perform the actual upload.
+    // Refer to the respective SDK documentation
+}

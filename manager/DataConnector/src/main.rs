@@ -7,13 +7,11 @@ mod utils;
 use utils::get_embeddings:
 
 mod uploader;
-use uploader::
+use uploader::upload_file;
 
 async fn hello_world() -> &'static str {
     "Hello, world!"
 }
-
-
 
 //The macros of shuttle_runtime main allows
 //you to run async fn axum as main.
