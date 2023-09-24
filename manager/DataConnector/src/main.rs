@@ -4,10 +4,8 @@ use axum::{routing::get, Router};
 use tower_http::services::ServeDir;
 
 mod utils;
-use utils::get_embeddings:
-
 mod uploader;
-use uploader::upload_file;
+
 
 async fn hello_world() -> &'static str
 {

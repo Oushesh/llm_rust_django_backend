@@ -15,9 +15,7 @@ serde = { version = "1.0.163", features = ["derive"] }
 serde_json = "1.0.96"
 tokio = "1.28.2"
 tower-http = { version = "0.4.0", features = ["full"] }
-axum-tide-compat = "0.3"
 tide = "0.16"
-tide-multipart = "0.2"
-pinecone-sdk = "0.6"
-qdrant-sdk = "0.3"
-transformers = "0.5"
+pinecone = "0.2.5"
+llm-chain-qdrant = "0.12.3"
+rust-bert = "0.21.0"
