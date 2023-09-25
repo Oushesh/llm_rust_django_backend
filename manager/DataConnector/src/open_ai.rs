@@ -1,4 +1,9 @@
 use shuttle_secrets::SecretStore;
+use openai::{
+    chat::{ChatCompletion, ChatCompletionBuilder, ChatCompletionDelta, ChatCompletionMessage},
+    embeddings::{Embedding, Embeddings},
+};
+use anyhow::Result;
 
 pub fn setup(secrets: &SecretStore)-> Result<()>{
     let openai_key = secrets
