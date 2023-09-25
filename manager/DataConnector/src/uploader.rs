@@ -1,17 +1,16 @@
 use axum::prelude::*;
 use axum_multipart::Multipart;
 use axum::response::Response;
-use futures::StreamExt;
 use serde::{Deserialize, Serialize};
-use transformers::{LanguageModel, LlmEmbedding};
 use pinecone_sdk::pinecone::{Document, Pinecone};
-use qdrant_sdk::index::{Index, IndexConfig};
 use std::io::Write;
-use tempfile::NamedTempFile;
 use hyper::StatusCode;
 use std::convert::Infallible;
+use axum::response::IntoResponse;
+use tempfile::NamedTempFile;
 
 mod utils;
+use crate::utils::upload_to_pinecone_or_qdrant;
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Document {
@@ -50,6 +49,7 @@ pub async fn upload_file(
             let data = chunk.unwrap();
             file.write_all(&data).unwrap();
         }
+
         // Read the Markdown content from the temporary file
         let markdown = std::fs::read_to_string(temp_file.path()).unwrap();
 
@@ -57,11 +57,13 @@ pub async fn upload_file(
         let embeddings = get_embeddings(&markdown, &model);
 
         // Upload embeddings to Pinecone or Qdrant
-        upload_to_pinecone_or_qdrant(embeddings, &pinecone, &qdrant);
+        upload_to_pinecone_or_qdrant(embeddings);
 
         // Delete the temporary file
         temp_file.close().unwrap();
     }
 
-    Ok(Response::new(StatusCode::OK))
+    // Respond with a simple message as the body
+    Ok(Response::new(StatusCode::OK).body(Body::empty()))
 }
+
