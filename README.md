@@ -252,5 +252,4 @@ https://colab.research.google.com/drive/1AXccYmC11kWJ8zZtqS78ZvmBCC7yIPI0#scroll
    * Backend:  Deployment of Django on Vercel.json: https://www.youtube.com/watch?v=ZjVzHcXCeMU&t=423s
    * Backend: also on heroku: https://llmrustdjangobackend-5203aa413008.herokuapp.com/api/docs#
    * Huggingface: https://huggingface.co/datasets/roneneldan/TinyStories
-
-
+   * add option to win the Guardrails.
