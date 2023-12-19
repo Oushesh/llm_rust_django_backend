@@ -252,4 +252,15 @@ https://colab.research.google.com/drive/1AXccYmC11kWJ8zZtqS78ZvmBCC7yIPI0#scroll
    * Backend:  Deployment of Django on Vercel.json: https://www.youtube.com/watch?v=ZjVzHcXCeMU&t=423s
    * Backend: also on heroku: https://llmrustdjangobackend-5203aa413008.herokuapp.com/api/docs#
    * Huggingface: https://huggingface.co/datasets/roneneldan/TinyStories
-   * add option to win the Guardrails.
+   * add option to win the Guardrails or any way to improve over Toxicity
+
+
+## Key Things to pitch to investors
+   * Rust Reliability
+   * Serve LLAMA2 on our own tech stack (end to end): No sharing  of information with openai or any other 3rd party providers
+   * prevent against attacks: Guardrails
+   * Every company uses lots of tools for their day to day operations. Number has kept increasing over and over again
+     which tools to use and why (advice)
+     custom automation made only for you. No more buggy UI path and huge consultation fees like UI Path and other RPA tools
+   * https://www.merge.dev/ (inspiration)
+   * Send us either a text description of your automation that want us to implement: 
