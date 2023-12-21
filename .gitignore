@@ -1,6 +1,6 @@
 fact_checker
-hallucination_app/binaries/.run
+agent_app/binaries/.run
 .env
-hallucination_app/Guardrails/.env
+agent_app/Guardrails/.env
 manager/Flowise
 manager/CLI/ffmpeg_command_generator/target/*
