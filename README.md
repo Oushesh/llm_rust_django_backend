@@ -271,7 +271,7 @@ https://colab.research.google.com/drive/1AXccYmC11kWJ8zZtqS78ZvmBCC7yIPI0#scroll
    * Embedded iPaaS (Developers build every integration
    * in a "no-code" tool that can be embedded into their product.)
    * Unified API --> Building on a single aggregated api
-   * Disadvantages: Difficult to scale integrstions, 
+   * Disadvantages: Difficult to scale integrations, 
      poor use of inhouse engineering resources
    * Embedded iPaaS Solutions force you to rely on engineers.
      Build 1 integration at a time.
@@ -279,4 +279,7 @@ https://colab.research.google.com/drive/1AXccYmC11kWJ8zZtqS78ZvmBCC7yIPI0#scroll
    * Pitch: Native Integrations: 
 
 ## Why are we better than UI Path?
-   The old one is clunky
+   The old one is clunky and what UI Path did
+   -- no expensive consultation Fees.
+   -- 10x faster at 10x cheaper price.
+   
