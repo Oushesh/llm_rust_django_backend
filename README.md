@@ -264,3 +264,19 @@ https://colab.research.google.com/drive/1AXccYmC11kWJ8zZtqS78ZvmBCC7yIPI0#scroll
      custom automation made only for you. No more buggy UI path and huge consultation fees like UI Path and other RPA tools
    * https://www.merge.dev/ (inspiration)
    * Send us either a text description of your automation that want us to implement: 
+
+## Merge API
+   * Custom Integrations with your product.
+   * Native Integrations --> InHouse Developers
+   * Embedded iPaaS (Developers build every integration
+   * in a "no-code" tool that can be embedded into their product.)
+   * Unified API --> Building on a single aggregated api
+   * Disadvantages: Difficult to scale integrstions, 
+     poor use of inhouse engineering resources
+   * Embedded iPaaS Solutions force you to rely on engineers.
+     Build 1 integration at a time.
+   * CRM, hRIS, ATS, ticketing.
+   * Pitch: Native Integrations: 
+
+## Why are we better than UI Path?
+   The old one is clunky
