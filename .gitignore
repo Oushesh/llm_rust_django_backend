@@ -4,3 +4,6 @@ agent_app/binaries/.run
 agent_app/Guardrails/.env
 manager/Flowise
 manager/CLI/ffmpeg_command_generator/target/*
+dev_venv/*
+.idea/*
+manager/Huggingface/seamless-streaming/*
