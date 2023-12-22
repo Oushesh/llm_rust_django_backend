@@ -111,4 +111,8 @@ sync-logs:
 	gsutil -o "GSUtil:parallel_process_count=1" cp -r Services/services_app/logs/* gs://logs_impactnexus/
 
 
-
+install-whisper:
+    brew install ffmpeg && \
+	python3.10 -m venv whisper_venv && \
+          . whisper_venv/bin/activate && \
+          python3.10 -m pip install -r manager/whisper_real_time/requirements.txt

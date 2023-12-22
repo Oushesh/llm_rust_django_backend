@@ -283,3 +283,7 @@ https://colab.research.google.com/drive/1AXccYmC11kWJ8zZtqS78ZvmBCC7yIPI0#scroll
    -- no expensive consultation Fees.
    -- 10x faster at 10x cheaper price.
    
+   -- talk to the agent get your workflow
+   
+   -- option to write the query in text or send voice message.
+   -- Reference: https://www.runautomat.com/blog/fundraising-announcement
