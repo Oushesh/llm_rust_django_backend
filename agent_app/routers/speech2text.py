@@ -9,6 +9,8 @@ OpenAI Endpoint decides on how
 #Current state: Data on GCP Bucket
 
 import os
+from dotenv import load_dotenv
+import openai
 from ninja import Router
 import subprocess
 router = Router()
@@ -17,21 +19,53 @@ router = Router()
 from django.http import StreamingHttpResponse
 from django.conf import settings
 
+def get_variables_llm_session()->str:
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    # print ("BASE_DIR", BASE_DIR)
+    env_file  = ".env"
+    log_file_path = os.path.join(BASE_DIR, "logs/session.log")
+
+    print ("log_file_path",log_file_path)
+
+    # Configure logging
+    logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+    dotenv_path = os.path.join(BASE_DIR, env_file)
+    load_dotenv(dotenv_path)
+    api_key = os.getenv("OPENAI_API_KEY")
+
+    try:
+        if api_key:
+            info = "OpenAI Key Successfully loaded"
+            print("OpenAI Key Successfully loaded")
+            logging.info(info)
+        else:
+            error_msg = f"API Key not found in ${env_file} file"
+            raise ValueError(error_msg)
+
+    except ValueError as e:
+        logging.error(str(e))
+
+    assert isinstance(api_key,str)
+    return api_key
+
 @router.get("/2text")
 def convert2text(request,user_prompt:str):
     assert (isinstance(user_prompt,str))
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
     audio_dir = os.path.join(settings.BASE_DIR,"agent_app","audio")
     audio_path = os.path.join(audio_dir,"output_audio.mp3")
 
     # command line input, add also the Key of openai here
+    api_key = get_variables_llm_session()
 
     cmd = [
         "whisper-stream",
         "-f", audio_path,
         "-p", "./",
         "-l", "en",
-        "-t", "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"
+        "-t", api_key
     ]
 
     process = subprocess.Popen(cmd,stdout=subprocess.PIPE,text=True)
