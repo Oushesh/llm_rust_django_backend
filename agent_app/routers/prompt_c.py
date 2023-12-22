@@ -16,9 +16,9 @@ def StoryTelling(request,input:str):
     #llama2_bin = "/Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/manager/llama2.c/./run"
     #llama2_model = "/Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/manager/llama2.c/stories15M.bin"
 
-    binaries_dir = os.path.join(settings.BASE_DIR, "hallucination_app", "binaries")
-    llama2_bin = os.path.join(settings.BASE_DIR, "hallucination_app","binaries/./run")
-    llama2_model = os.path.join(settings.BASE_DIR,"hallucination_app","binaries","stories15M.bin")
+    binaries_dir = os.path.join(settings.BASE_DIR, "agent_app", "binaries")
+    llama2_bin = os.path.join(settings.BASE_DIR, "agent_app","binaries/./run")
+    llama2_model = os.path.join(settings.BASE_DIR,"agent_app","binaries","stories15M.bin")
 
     """"
     # Check if the binary doesn't exist

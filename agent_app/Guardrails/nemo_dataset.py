@@ -11,12 +11,12 @@ from django.conf import settings
 import yaml,os
 from dotenv import load_dotenv
 
-load_dotenv(os.path.join(settings.BASE_DIR,"hallucination_app","Guardrails",".env"))
+load_dotenv(os.path.join(settings.BASE_DIR,"agent_app","Guardrails",".env"))
 
 #load_dotenv(".env")
 
-from hallucination_app.Guardrails.knowledge_base.constants import model_content, rag_colang_content
-from hallucination_app.Guardrails.utils import test_colang_config,test_model_config
+from agent_app.Guardrails.knowledge_base.constants import model_content, rag_colang_content
+from agent_app.Guardrails.utils import test_colang_config,test_model_config
 
 def guardrail(prompt:str)->bool:
     assert (isinstance(prompt, str) == True)

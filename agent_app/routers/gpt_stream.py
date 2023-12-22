@@ -13,7 +13,6 @@ project_root = os.path.abspath(os.path.join(current_script_dir, "../../.."))
 
 print("project_root stream", project_root)
 
-
 # The subprocess command
 @router.get("/stream")
 def generate_output(request):
@@ -41,7 +40,6 @@ def generate_output(request):
                 bufsize=0,
                 universal_newlines=True,
             )
-
             for line in iter(process.stdout.readline, ""):
                 yield line
         except Exception as e:

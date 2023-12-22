@@ -14,9 +14,6 @@ run-smart-evidence:
 run:
 	export PYTORCH_ENABLE_MPS_FALLBACK=1 && python3 manage.py runserver
 
-run-server:
-	/bin/sh run_server.sh
-
 dynamodb:
 	docker run -p 8000:8000 amazon/dynamodb-local
 
@@ -82,7 +79,6 @@ sync-models-local:
 sync-models-gcp:
 	gsutil -m rsync -r models gs://dvc_models_bucket
 
-
 install-precommit:
 	pre-commit install
 
@@ -106,13 +102,11 @@ install-qdrant:
 install-weaviate:
 	docker run -d -p 8080:8080 --env AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED='true' --env PERSISTENCE_DATA_PATH='/var/lib/weaviate' semitechnologies/weaviate:1.17.2
 
-
 sync-logs:
 	gsutil -o "GSUtil:parallel_process_count=1" cp -r Services/services_app/logs/* gs://logs_impactnexus/
 
-
 install-whisper:
-    brew install ffmpeg && \
-	python3.10 -m venv whisper_venv && \
-          . whisper_venv/bin/activate && \
-          python3.10 -m pip install -r manager/whisper_real_time/requirements.txt
+	brew tap yohasebe/whisper-stream && brew install whisper-stream
+
+
+

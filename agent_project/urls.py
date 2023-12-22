@@ -1,4 +1,4 @@
-"""hallucination_project URL Configuration
+"""agent_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,21 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ninja import NinjaAPI
-from ninja import Schema
+from ninja import NinjaAPI, Schema
 
-# We add all the routers here:
-
-#from hallucination_app.routers.ingest_api import router as ingest_router
-#from hallucination_app.routers.gpt_api import router as gpt_router
-from hallucination_app.routers.gpt_stream import router as stream_router
-from hallucination_app.routers.prompt_c import router as prompt_c_router
-from hallucination_app.routers.guard_rails import router as guard_rail_router
+from agent_app.routers.gpt_stream import router as stream_router
+from agent_app.routers.prompt_c import router as prompt_c_router
+from agent_app.routers.guard_rails import router as guard_rail_router
+from agent_app.routers.speech2text import router as speech2text_router
 
 api = NinjaAPI()
-#api.add_router("/", ingest_router)
-#api.add_router("/", gpt_router)
+
 api.add_router("/", stream_router)
 api.add_router("/",prompt_c_router)
 api.add_router("/",guard_rail_router)
-urlpatterns = [path("admin/", admin.site.urls), path("api/", api.urls)]
+api.add_router("/openai",speech2text_router)
+
+urlpatterns = [
+    path("admin/",
+    admin.site.urls),
+    path("api/", api.urls)
+]

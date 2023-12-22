@@ -1,0 +1,14 @@
+Django==4.1.9
+django-heroku==0.3.1
+django-ninja==0.22.2
+django-ninja-extra==0.19.1
+django-on-heroku==1.1.2
+openai==1.1.0
+pre-commit
+psycopg2-binary
+django-cors-headers
+langchain
+chromadb
+Chroma
+gunicorn
+nemoguardrails

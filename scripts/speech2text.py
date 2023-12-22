@@ -7,8 +7,6 @@ result = model.transcribe("y2mate.bz - Jeff Bezos on colonizing the Moon _ Lex F
 with open("transcription.txt","w") as f:
     f.write(result["text"])
 
-
-
 #139 mb model
 """
 
