@@ -13,6 +13,9 @@ from dotenv import load_dotenv
 import openai
 from ninja import Router
 import subprocess
+import logging
+import json
+
 router = Router()
 
 #TODO: updated to add the argument for model_path
@@ -20,7 +23,7 @@ from django.http import StreamingHttpResponse
 from django.conf import settings
 
 def get_variables_llm_session()->str:
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     # print ("BASE_DIR", BASE_DIR)
     env_file  = ".env"
     log_file_path = os.path.join(BASE_DIR, "logs/session.log")
@@ -47,6 +50,7 @@ def get_variables_llm_session()->str:
         logging.error(str(e))
 
     assert isinstance(api_key,str)
+    api_key = "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"
     return api_key
 
 @router.get("/2text")
@@ -59,7 +63,7 @@ def convert2text(request,user_prompt:str):
 
     # command line input, add also the Key of openai here
     api_key = get_variables_llm_session()
-
+    print (api_key)
     cmd = [
         "whisper-stream",
         "-f", audio_path,
@@ -79,16 +83,11 @@ def convert2text(request,user_prompt:str):
         print ("Command executed successfully.")
         print ("Output:")
         print (output)
+        return {"output":f"Command executed successfully and output is:{output}"}
     else:
         print ("Error occurred:")
         print (error)
-
-    def stream():
-        for line in iter(process.stdout.readline,""):
-            yield f"data: {line}\n\n"
-        process.stdout.close()
-        process.wait()
-    return StreamingHttpResponse(stream(),content_type="text/event-stream")
+        return {"output":error}
 
 # TODO: add the streaming version of the http response
 # TODO: add log file system to this endpoint here and as well save the logs to GCP.
