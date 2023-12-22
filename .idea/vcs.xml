@@ -3,5 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/manager/Flowise" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/manager/Huggingface/seamless-m4t-v2-large" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/manager/Huggingface/seamless-streaming" vcs="Git" />
   </component>
 </project>
