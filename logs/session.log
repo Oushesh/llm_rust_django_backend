@@ -17,3 +17,25 @@
 2023-12-22 20:12:16,315 - INFO - OpenAI Key Successfully loaded
 2023-12-22 20:13:28,603 - INFO - /Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/agent_app/routers/speech2text.py changed, reloading.
 2023-12-22 20:14:40,618 - INFO - OpenAI Key Successfully loaded
+2023-12-22 20:27:09,896 - INFO - OpenAI Key Successfully loaded
+2023-12-22 20:35:28,849 - INFO - OpenAI Key Successfully loaded
+2023-12-22 20:35:49,573 - INFO - /Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/agent_app/routers/speech2text.py changed, reloading.
+2023-12-22 20:36:24,454 - INFO - OpenAI Key Successfully loaded
+2023-12-22 20:37:06,497 - INFO - /Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/agent_app/routers/speech2text.py changed, reloading.
+2023-12-22 20:37:11,501 - INFO - OpenAI Key Successfully loaded
+2023-12-23 07:56:23,936 - INFO - OpenAI Key Successfully loaded
+2023-12-23 07:56:32,918 - INFO - Command executed successfully
+2023-12-23 07:56:32,918 - INFO - Output:
+2023-12-23 07:56:32,933 - WARNING - No project ID could be determined. Consider running `gcloud config set project` or setting the GOOGLE_CLOUD_PROJECT environment variable
+2023-12-23 07:56:32,934 - ERROR - Error uploading logs to GCS: Project was not passed and could not be determined from the environment.
+2023-12-23 07:57:03,067 - INFO - /Users/ousheshharadhun/Documents/Workspace/FacebookLLAMA/llm_rust_django_backend/agent_app/routers/speech2text.py changed, reloading.
+2023-12-23 07:57:36,937 - INFO - OpenAI Key Successfully loaded
+2023-12-23 07:57:43,628 - INFO - Command executed successfully
+2023-12-23 07:57:43,628 - INFO - Output:
+2023-12-23 07:57:43,638 - WARNING - No project ID could be determined. Consider running `gcloud config set project` or setting the GOOGLE_CLOUD_PROJECT environment variable
+2023-12-23 07:57:43,638 - ERROR - Error uploading logs to GCS: Project was not passed and could not be determined from the environment.
+2023-12-23 07:58:26,596 - INFO - OpenAI Key Successfully loaded
+2023-12-23 07:58:34,795 - INFO - Command executed successfully
+2023-12-23 07:58:34,795 - INFO - Output:
+2023-12-23 07:58:34,803 - WARNING - No project ID could be determined. Consider running `gcloud config set project` or setting the GOOGLE_CLOUD_PROJECT environment variable
+2023-12-23 07:58:34,804 - ERROR - Error uploading logs to GCS: Project was not passed and could not be determined from the environment.

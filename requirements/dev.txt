@@ -12,3 +12,5 @@ chromadb
 Chroma
 gunicorn
 nemoguardrails
+google-cloud-logging
+google-cloud-storage

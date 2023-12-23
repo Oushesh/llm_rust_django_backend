@@ -15,12 +15,15 @@ from ninja import Router
 import subprocess
 import logging
 import json
+from django.http import StreamingHttpResponse
+from django.conf import settings
+
+from agent_app.utils.utils import upload_logs_to_gcs
 
 router = Router()
 
 #TODO: updated to add the argument for model_path
-from django.http import StreamingHttpResponse
-from django.conf import settings
+
 
 def get_variables_llm_session()->str:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -28,12 +31,12 @@ def get_variables_llm_session()->str:
     env_file  = ".env"
     log_file_path = os.path.join(BASE_DIR, "logs/session.log")
 
-    print ("log_file_path",log_file_path)
-
     # Configure logging
     logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
     dotenv_path = os.path.join(BASE_DIR, env_file)
+    logging.info(".env path:",dotenv_path)
+    print (dotenv_path)
     load_dotenv(dotenv_path)
     api_key = os.getenv("OPENAI_API_KEY")
 
@@ -50,13 +53,14 @@ def get_variables_llm_session()->str:
         logging.error(str(e))
 
     assert isinstance(api_key,str)
-    api_key = "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"
+    #api_key = "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"
     return api_key
 
 @router.get("/2text")
 def convert2text(request,user_prompt:str):
     assert (isinstance(user_prompt,str))
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    local_log_path = os.path.join(BASE_DIR,"logs/session.log")
 
     audio_dir = os.path.join(settings.BASE_DIR,"agent_app","audio")
     audio_path = os.path.join(audio_dir,"output_audio.mp3")
@@ -80,16 +84,19 @@ def convert2text(request,user_prompt:str):
     # TODO: add this to a logging system
 
     if process.returncode == 0:
-        print ("Command executed successfully.")
-        print ("Output:")
-        print (output)
+        logging.info(f"Command executed successfully")
+        logging.info(f"Output:")
+
+        upload_logs_to_gcs(logging,local_log_path, "logs_impactnexus", "parquet_conversion/parquet_conversion.log")
         return {"output":f"Command executed successfully and output is:{output}"}
     else:
-        print ("Error occurred:")
-        print (error)
+        logging.error(f"Error occurred:")
+        assert isinstance(error,str)
+        logging.error(error)
+        upload_logs_to_gcs(logging,local_log_path, "logs_impactnexus", "parquet_conversion/parquet_conversion.log")
         return {"output":error}
 
-# TODO: add the streaming version of the http response
 # TODO: add log file system to this endpoint here and as well save the logs to GCP.
+# TODO: add the transcription to postgresql database
 
 
